@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:21.04
 
 ENV TZ Asia/Shanghai
 ENV DEBIAN_FRONTEND noninteractive
@@ -10,9 +10,9 @@ RUN set -ex \
     && rm /etc/localtime \
     && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && dpkg-reconfigure -f noninteractive tzdata \
-    && wget http://dl-cdn.oray.com/hsk/linux/phddns-5.0.0-amd64.deb \
-    && dpkg -i phddns-5.0.0-amd64.deb \
-    && rm phddns-5.0.0-amd64.deb \
+    && wget https://down.oray.com/hsk/linux/phddns_5_1_amd64.deb \
+    && dpkg -i phddns_5_1_amd64.deb \
+    && rm phddns_5_1_amd64.deb \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get autoremove -y
