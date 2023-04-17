@@ -10,13 +10,13 @@ RUN set -ex \
     && rm /etc/localtime \
     && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && dpkg-reconfigure -f noninteractive tzdata \
-    && wget https://down.oray.com/hsk/linux/phddns_5_1_amd64.deb \
-    && dpkg -i phddns_5_1_amd64.deb \
-    && rm phddns_5_1_amd64.deb \
+    && wget "https://down.oray.com/hsk/linux/phddns_5.2.0_amd64.deb" -O phddns_5.2.0_amd64.deb \
+    && dpkg -i phddns_5.2.0_amd64.deb \
+    && rm phddns_5.2.0_amd64.deb \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get autoremove -y
 
-COPY run.sh .
+COPY run.sh /
 
-CMD /sbin/init
+ENTRYPOINT /run.sh
