@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 TODAY_TXT="/tmp/today.txt"
 
 if [[ ! -f "$TODAY_TXT" ]]; then

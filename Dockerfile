@@ -1,4 +1,4 @@
-FROM ubuntu:21.04
+FROM ubuntu:20.04
 
 ENV TZ Asia/Shanghai
 ENV DEBIAN_FRONTEND noninteractive
@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN set -ex \
     && echo $TZ > /etc/timezone \
     && apt-get update \
-    && apt-get install -y --no-install-recommends tzdata wget \
+    && apt-get install -y --no-install-recommends tzdata wget ca-certificates \
     && rm /etc/localtime \
     && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && dpkg-reconfigure -f noninteractive tzdata \
